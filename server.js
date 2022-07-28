@@ -97,9 +97,9 @@ app.get("/delete/:id", async (req, res) => {
   try {
     let id = req.params.id;
     console.log(id);
-    // let doc = await File.findById(id);
-    // DeleteFile(doc.path);
-    // await File.findByIdAndDelete({ _id: mongoose.mongo.ObjectId(id) });
+    let doc = await File.findById(id);
+    DeleteFile(doc.path);
+    await File.findByIdAndDelete({ _id: id });
 
     res.redirect("/list");
   } catch (err) {
